@@ -119,6 +119,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_ROOT = BASE_DIR / 'media' #Crea y redirecciona imagenes guardadas en /admin
+
+MEDIA_URL = '/public/' #A partir de nuestra URL va a poder servir la MEDIA
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
