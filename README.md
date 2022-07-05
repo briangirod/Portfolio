@@ -6,6 +6,7 @@ El mismo consta de un foro en el cual cuenta con:
 - Post
 - Comentarios
 - Y otros..
+
 Este proyecto fue realizado únicamente por mi.
 
 Bugs:
