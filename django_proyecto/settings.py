@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -39,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'portfolio',
+    'ckeditor',
+    'mensajes',
+    
 ]
 
 MIDDLEWARE = [
@@ -119,11 +123,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-MEDIA_ROOT = BASE_DIR / 'media' #Crea y redirecciona imagenes guardadas en /admin
+MEDIA_ROOT = os.path.join(BASE_DIR,'media') #Crea y redirecciona imagenes guardadas en /admin
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
-MEDIA_URL = '/public/' #A partir de nuestra URL va a poder servir la MEDIA
+MEDIA_URL = '/media/' #A partir de nuestra URL va a poder servir la MEDIA
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_URL = 'Login'

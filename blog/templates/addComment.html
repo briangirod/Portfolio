@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h2>Agregar Comentario</h2>
+
+<div class="container">
+    <form class="create-form" action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group my-4">
+            <label for="id_title">Titulo</label>
+            <input class="form-control" type="text" name="title" id="id_title" placeholder="Titulo" required autofocus>
+        </div>
+        <div class="form-group my-4">
+            <label for="id_body">Cuerpo</label>
+            <textarea class="form-control" type="text" name="body" id="id_body" cols="30" rows="3" placeholder="Agregar comentario..."></textarea>
+        </div>
+        <div class="d-grid gap-2 d-md flex justify-content-md-end">
+            <button class="submit-button btn btn-dark btn-block me-md-2" type="submit">Comentar</button>
+
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{%extends 'base.html'%}
+
+{%block contenedor%}
+<h1 class="text-center">
+    Bienvenido {{user}}. Inbox
+
+</h1><br>
+<p class="text-center">Estimado usuario, la web se encuentra en mantenimiento, si usted desea crear un nuevo chat con algún usuario le solicitamos colocar la URL: localhost:8000/dm/ seguido del usuario al cual usted desea hablarle, ej: <a href="localhost:8000/dm/admin">"localhost:8000/dm/admin"</a> </p>
+<p class="text-center">Sepa disculparnos, estamos trabajando para mejorar su navegación</p><br>
+{%for inbox in inbox %}
+<div class="div_inbox">
+
+    {%for second_user in inbox.canalusuario_set.all%}
+        {%if second_user.usuario == request.user%}
+
+        {%else%}
+            <a href="{%url 'detailms' second_user.usuario.username%}">
+                <p>
+                    {{second_user.usuario}}
+                </p>
+                <small>
+                    ({{inbox.canalmensaje_set.count}}) Mensajes
+                </small>
+            </a>
+        {%endif%}
+
+    {%endfor%}
+  
+    {% if inbox.canalmensaje_set.count != 0 %}
+    
+        <div class="div_ms_inbox">
+            {% with ultimo_mensaje=inbox.canalmensaje_set.last %}    
+
+            <p>
+                Mensaje: {{ultimo_mensaje.texto}}
+            </p>
+            <p>
+                Usuario: {{ultimo_mensaje.usuario}}
+
+            </p>
+
+            {% endwith %}
+        </div>
+        
+    
+    {%else%}
+            <p>
+                No hay mensajes en nuestro inbox
+            </p>
+    {%endif%}
+
+
+
+
+</div>
+
+{%empty%}
+
+<h2>
+    Inbox Vacio
+</h2>
+
+{%endfor%}
+
+<style>
+    .div_inbox{
+        widht:90%;
+        margin: 10px auto;
+        background: #111;
+        border-radius: 5px;
+        border:1px solid #e6e6e6;
+        padding: 5px;
+    }
+
+</style>
+
+{%endblock%}

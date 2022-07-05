@@ -2,17 +2,53 @@
 
 {% block content %}
 
+<style>
+    .comentario{
+    background: #111;
+    margin-left: 5px;
+    border-bottom-right-radius: 16px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    }
+    li{
+        list-style-type: none;
+        
+    }
+</style>
+
 <div class="text-center">
     <h2>{{post.title}}</h2>
 <h3 class="my-2 h5 text-muted">{{post.date|date:'F jS Y'}}</h3>
 
-<img src="{{post.image.url}}" alt="{{post.title}}" class="img-fluid">
+<img src="{{post.image.url}}" alt="{{post.title}}" class="img-fluid" width="600" height="700">
 
 <div class="my-4">
     <p>{{post.description|safe}}</p>
 </div>
+<p class="text-right">
+    Autor del post:&nbsp;{{post.user}}
+</p>
 
 </div>
+
+<h2>Comentarios</h2><a class="btn btn-dark me-md-2 my-4" href="{% url 'blog:add_comment' post.pk %}" role="button">Agregar Comentario</a>
+{%if not post.comments.all%}
+    <p>¡Se el primero en comentar!</p>
+{%else%}
+    {%for comment in post.comments.all%}
+        <article>
+            <li><br>
+                <div class="comentario"> <br>
+                </ul><h4>&nbsp;&nbsp;&nbsp;{{comment.author}}</h4>
+                <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;{{comment.title}} &nbsp;&nbsp;|&nbsp;&nbsp; Fecha &nbsp;&nbsp;|&nbsp;&nbsp; {{comment.add_time}}</strong><br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{comment.body}}<br><br>
+                </div>
+            </li>
+
+            
+        </article>
+    {%endfor%}
+{%endif%}
 
 
 {%endblock%}

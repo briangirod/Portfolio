@@ -4,39 +4,45 @@
 
 {% block content %}
 
+{%csrf_token%}
+<br>
 <header class="row bg-black">
     <div class="col-md-4 my-auto">
-        <img src="{% static 'portfolio/imghome.png' %}" alt="">
+        <img src="{% static 'portfolio/home.png'%}" alt="" width="400" height="300">
     </div>
     <div class="col-md-8">
-        <h1>I am <strong>Bryan Girod</strong></h1>
-        <h3>I am a Python Full Stack Developer</h3>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam aliquam tempora laborum vel. Natus, accusamus molestias corrupti quis ratione debitis eaque, ad, a eligendi doloremque perferendis voluptatum tempora necessitatibus illum?</p>
+        <h2>Hola,</h2>
+        <h1>Bienvenido a mi <strong>PROYECTO</strong></h1>
+        <h3>El mismo fue desarrollado para la Entrega FINAL de CoderHouse</h3>
+        <p>En el transcurso de estos 20 días, trabajé arduamente en este proyecto el cual hoy presento</p>
+        <p>User Test: &nbsp;&nbsp;&nbsp;&nbsp; <b>User:</b> admin1  <b>Password:</b> admin1</p>
+
         <a href="{% static 'portfolio/cvgirod.pdf' %}" target="_blank" class="btn btn-primary btn-lg rounded-0 my-3">Descargar CV</a>
 
     </div>
 
-</header>
+</header><br>
 
-<div class="row my-4 text-center">
+<div class="row my-4 text-center"><br><br>
     
-    <h3>Mis Proyectos</h3>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel saepe quod explicabo assumenda laborum rerum repellat minus, unde molestias nobis, sint placeat dicta at deserunt dignissimos voluptatum quidem minima corporis.</p>
-
-
+    <h3>Herramientas</h3>
+    <p>Se utilizaron las siguientes herramientas para el uso del mismo, a su vez este proyecto está pensado para luego de la entrega ser un portfolio personal, modificando sus apps y su maquetado</p><br>
+    {% for i in user_detail %}{% if i.is_superuser %}
+    <a href="{% static 'portfolio/cvgirod.pdf' %}" target="_blank" class="btn btn-primary btn-lg rounded-0 my-3">Modificar</a>
+    {% endif %}{% endfor %}
 {% for project in projects  %}
 
 <div class="col md-4 p-4">
     <div class="card bg-black card-project">
         <div class="card-body">
-            <img src="{{project.image.url}}" alt="{{project.title}}" class="card-img-top">
+            <img src="{{project.image.url}}" alt="{{project.title}}" class="card-img-top" width="300" height="300">
             <h2>{{project.title}}</h2>
             <p>{{project.description}}</p>
 
             {% if project.url %}
              <a href="{{project.url}}" class="btn btn-light rounded-0 btn-sm" target="_blank">{{project.url}}</a>
 
-             {% endif %}
+            {% endif %}
         </div>
     </div>
 </div>

@@ -19,13 +19,25 @@ from django.conf.urls.static import static
 from django.conf import settings
 from portfolio import views
 from blog import urls
+from django.contrib.auth.views import LogoutView
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('blog/', include('blog.urls'))
+    path('', include('blog.urls')),
+    path('', include('mensajes.urls')),
+    path('about', views.about, name='about'),
+    path('mi_usuario', views.mi_usuario, name='mi_usuario'),
+    path('login', views.login_request, name="Login"),
+    path('register', views.register, name="Register"),
+    path('logout', LogoutView.as_view(template_name='logout.html'),  name='Logout'),
+    path('poster', views.poster, name='poster'),
+    path('error404',views.error, name='error404')
+    
 ]
 
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
