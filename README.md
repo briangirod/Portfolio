@@ -5,6 +5,10 @@ El mismo consta de un foro en el cual cuenta con:
 - Inbox/Chat
 - Post
 - Comentarios
+- Navbar
+- Footer
+- Login
+- Error404
 - Y otros..
 
 Este proyecto fue realizado únicamente por mi.
@@ -17,5 +21,11 @@ Falto:
 - Borrar y editar Post
 - Borrar Comentarios
 - Agregar boton de nuevo Chat
+
+Herramientas utilizadas
+-Python
+-HTML
+-CSS
+-JavaScript.. un poco
 
 Un trabajo complicado pero tanto esfuerzo valió la pena.
